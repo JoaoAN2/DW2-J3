@@ -73,13 +73,17 @@ public class Inserir extends HttpServlet {
         
         String siglaId = request.getParameter("id");
         String name = request.getParameter("federation");
-
-        Federation federation = new Federation(siglaId, name);
-
-        DAOFederation daoFederation = new DAOFederation();
-        daoFederation.inserir(federation);
         
-        request.setAttribute("message", "Federation: " + federation.getSiglaFederation() + " inserido com sucesso");
+        DAOFederation daoFederation = new DAOFederation();
+        
+        if (daoFederation.obter(siglaId.toUpperCase()) == null) {
+            Federation federation = new Federation(siglaId.toUpperCase(), name);
+            daoFederation.inserir(federation);
+            request.setAttribute("message", "Federation: " + federation.getSiglaFederation() + " inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Federação já cadastrada!");
+        }
+        
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

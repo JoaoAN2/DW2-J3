@@ -73,13 +73,17 @@ public class Inserir extends HttpServlet {
         
         String siglaId = request.getParameter("id");
         String name = request.getParameter("gender");
-
-        Gender gender = new Gender(siglaId, name);
-
-        DAOGender daoGender = new DAOGender();
-        daoGender.inserir(gender);
         
-        request.setAttribute("message", "Gender: " + gender.getSiglaGender() + " inserido com sucesso");
+        DAOGender daoGender = new DAOGender();
+        
+        if (daoGender.obter(siglaId.toUpperCase()) == null) {
+            Gender gender = new Gender(siglaId.toUpperCase(), name);
+            daoGender.inserir(gender);
+            request.setAttribute("message", "Gender: " + gender.getSiglaGender() + " inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Gênero já cadastrado!");
+        }
+        
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

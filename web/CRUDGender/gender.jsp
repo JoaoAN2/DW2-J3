@@ -26,7 +26,7 @@
                         </a>
                     </div>
                     <h2 class="my-3">Gênero</h2>
-                    <input value="<%out.print(result.getSiglaGender());%>" type="text" class="form-control mb-3" placeholder="Sigla do Gênero" name="id" id="id" readonly>
+                    <input value="<%out.print(result.getSiglaGender());%>" type="text" class="form-control mb-3" placeholder="Sigla do Gênero" name="id" maxlength="3" id="id" readonly>
                     <input value="<%out.print(result.getFullGender());%>" type="text" class="form-control mb-3" placeholder="Nome do Gênero" name="gender">
                     <div class="text-center mt-3">
                         <a href="index.jsp" class="btn btn-danger">Voltar</a>

@@ -73,7 +73,8 @@ public class Buscar extends HttpServlet {
 
         String id = request.getParameter("id");
         DAOCatReferee daoCatReferee = new DAOCatReferee();
-        CatReferee catReferee = daoCatReferee.obter(id);
+        
+        CatReferee catReferee = daoCatReferee.obter(id.toUpperCase());
 
         request.setAttribute("catRefereeBuscar", catReferee);
         request.getRequestDispatcher("cat-referee.jsp").forward(request, response);

@@ -71,16 +71,18 @@ public class Inserir extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String siglaId = request.getParameter("id");
         String name = request.getParameter("title");
-
-        Title title = new Title(siglaId, name);
-
         DAOTitle daoTitle = new DAOTitle();
-        daoTitle.inserir(title);
         
-        request.setAttribute("message", "Title: " + title.getSiglaTitle() + " inserido com sucesso");
+        if (daoTitle.obter(siglaId.toUpperCase()) == null) {
+            Title title = new Title(siglaId.toUpperCase(), name);
+            daoTitle.inserir(title);
+            request.setAttribute("message", "Title: " + title.getSiglaTitle() + " inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Título já cadastrado!");
+        }
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

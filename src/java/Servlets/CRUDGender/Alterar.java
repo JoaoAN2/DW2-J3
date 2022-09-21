@@ -74,8 +74,8 @@ public class Alterar extends HttpServlet {
          String siglaId = request.getParameter("id");
         String name = request.getParameter("gender");
 
-        Gender gender = new Gender(siglaId, name);
-
+        Gender gender = new Gender(siglaId.toUpperCase(), name);
+        
         DAOGender daoGender = new DAOGender();
         daoGender.atualizar(gender);
 

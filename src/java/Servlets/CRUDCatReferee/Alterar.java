@@ -73,8 +73,8 @@ public class Alterar extends HttpServlet {
 
         String siglaId = request.getParameter("id");
         String name = request.getParameter("catReferee");
-
-        CatReferee catReferee = new CatReferee(siglaId, name);
+        
+        CatReferee catReferee = new CatReferee(siglaId.toUpperCase(), name);
 
         DAOCatReferee daoCatReferee = new DAOCatReferee();
         daoCatReferee.atualizar(catReferee);

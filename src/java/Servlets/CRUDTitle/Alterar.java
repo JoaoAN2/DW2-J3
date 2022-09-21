@@ -74,8 +74,8 @@ public class Alterar extends HttpServlet {
 
          String siglaId = request.getParameter("id");
         String name = request.getParameter("title");
-
-        Title title = new Title(siglaId, name);
+        
+        Title title = new Title(siglaId.toUpperCase(), name);
 
         DAOTitle daoTitle = new DAOTitle();
         daoTitle.atualizar(title);

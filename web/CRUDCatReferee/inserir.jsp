@@ -23,12 +23,12 @@
                     </a>
                 </div>
                 <h2 class="my-3">CatReferee</h2>
-                <input type="text" class="form-control mb-3" placeholder="Sigla do Categoria de árbitro" name="id">
-                <input type="text" class="form-control mb-3" placeholder="Categoria de Árbitro completo" name="catReferee">
+                <input type="text" class="form-control mb-3" placeholder="Sigla do Categoria de árbitro" name="id" maxlength="3" required>
+                <input type="text" class="form-control mb-3" placeholder="Categoria de Árbitro completo" name="catReferee" required>
                 <div class="text-center mt-3">
                     <a href="index.jsp" class="btn btn-danger">Voltar</a>
                     <button type="submit" class="btn btn-success">Inserir Categoria de árbitro</button>
-                    <a href="listaresult.jsp" class="btn btn-success">Listar Categoria de árbitros</a>
+                    <a href="listar.jsp" class="btn btn-success">Listar Categoria de árbitros</a>
                 </div>
             </form>
         </div>

@@ -73,7 +73,8 @@ public class Buscar extends HttpServlet {
 
         String id = request.getParameter("id");
         DAOGender daoGender = new DAOGender();
-        Gender gender = daoGender.obter(id);
+        
+        Gender gender = daoGender.obter(id.toUpperCase());
 
         request.setAttribute("genderBuscar", gender);
         request.getRequestDispatcher("gender.jsp").forward(request, response);

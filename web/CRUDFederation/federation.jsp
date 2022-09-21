@@ -26,7 +26,7 @@
                         </a>
                     </div>
                     <h2 class="my-3">Federação</h2>
-                    <input value="<%out.print(result.getSiglaFederation());%>" type="text" class="form-control mb-3" placeholder="Sigla do Federação" name="id" id="id" readonly>
+                    <input value="<%out.print(result.getSiglaFederation());%>" type="text" class="form-control mb-3" placeholder="Sigla do Federação" name="id" maxlength="3" id="id" readonly>
                     <input value="<%out.print(result.getNameFederation());%>" type="text" class="form-control mb-3" placeholder="Nome do Federação" name="federation">
                     <div class="text-center mt-3">
                         <a href="index.jsp" class="btn btn-danger">Voltar</a>

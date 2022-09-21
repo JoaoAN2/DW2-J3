@@ -23,12 +23,12 @@
                     </a>
                 </div>
                 <h2 class="my-3">Federation</h2>
-                <input type="text" class="form-control mb-3" placeholder="Sigla do federação" name="id">
-                <input type="text" class="form-control mb-3" placeholder="Federação completo" name="federation">
+                <input type="text" class="form-control mb-3" placeholder="Sigla do federação" name="id" maxlength="3" required>
+                <input type="text" class="form-control mb-3" placeholder="Federação completo" name="federation" required>
                 <div class="text-center mt-3">
                     <a href="index.jsp" class="btn btn-danger">Voltar</a>
                     <button type="submit" class="btn btn-success">Inserir federação</button>
-                    <a href="listaresult.jsp" class="btn btn-success">Listar federaçãos</a>
+                    <a href="listar.jsp" class="btn btn-success">Listar federaçãos</a>
                 </div>
             </form>
         </div>

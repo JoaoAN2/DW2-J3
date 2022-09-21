@@ -23,12 +23,12 @@
                     </a>
                 </div>
                 <h2 class="my-3">Gender</h2>
-                <input type="text" class="form-control mb-3" placeholder="Sigla do gênero" name="id">
-                <input type="text" class="form-control mb-3" placeholder="Gênero completo" name="gender">
+                <input type="text" class="form-control mb-3" placeholder="Sigla do gênero" name="id" maxlength="3" required>
+                <input type="text" class="form-control mb-3" placeholder="Gênero completo" name="gender" required>
                 <div class="text-center mt-3">
                     <a href="index.jsp" class="btn btn-danger">Voltar</a>
                     <button type="submit" class="btn btn-success">Inserir gênero</button>
-                    <a href="listaresult.jsp" class="btn btn-success">Listar gêneros</a>
+                    <a href="listar.jsp" class="btn btn-success">Listar gêneros</a>
                 </div>
             </form>
         </div>

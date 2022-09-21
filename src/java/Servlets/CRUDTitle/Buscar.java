@@ -74,7 +74,8 @@ public class Buscar extends HttpServlet {
 
         String id = request.getParameter("id");
         DAOTitle daoTitle = new DAOTitle();
-        Title title = daoTitle.obter(id);
+        
+        Title title = daoTitle.obter(id.toUpperCase());
 
         request.setAttribute("titleBuscar", title);
         request.getRequestDispatcher("title.jsp").forward(request, response);

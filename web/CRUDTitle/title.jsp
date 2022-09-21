@@ -26,7 +26,7 @@
                         </a>
                     </div>
                     <h2 class="my-3">Título</h2>
-                    <input value="<%out.print(result.getSiglaTitle());%>" type="text" class="form-control mb-3" placeholder="Sigla do Título" name="id" id="id" readonly>
+                    <input value="<%out.print(result.getSiglaTitle());%>" type="text" class="form-control mb-3" placeholder="Sigla do Título" name="id" maxlength="3" id="id" readonly>
                     <input value="<%out.print(result.getNameTitle());%>" type="text" class="form-control mb-3" placeholder="Nome do Título" name="title">
                     <div class="text-center mt-3">
                         <a href="index.jsp" class="btn btn-danger">Voltar</a>

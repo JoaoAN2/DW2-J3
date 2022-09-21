@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <h2 class="mt-5 mb-3">Pesquisar Federação</h2>
-                <input type="text" class="form-control mb-3" placeholder="Sigla" name="id" required>
+                <input type="text" class="form-control mb-3" placeholder="Sigla" name="id" maxlength="3" required>
                 <div class="text-center mt-3 mb-2">
                     <a href="inserir.jsp" class="btn btn-danger">Inserir Federação</a>
                     <button type="submit" class="btn btn-success">Procurar Federação</button>

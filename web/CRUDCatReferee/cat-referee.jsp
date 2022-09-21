@@ -26,7 +26,7 @@
                         </a>
                     </div>
                     <h2 class="my-3">Categoria de Árbitro</h2>
-                    <input value="<%out.print(result.getSiglaCatReferee());%>" type="text" class="form-control mb-3" placeholder="Sigla do Categoria de Árbitro" name="id" id="id" readonly>
+                    <input value="<%out.print(result.getSiglaCatReferee());%>" type="text" class="form-control mb-3" placeholder="Sigla do Categoria de Árbitro" name="id" maxlength="3" id="id" readonly>
                     <input value="<%out.print(result.getNameCatReferee());%>" type="text" class="form-control mb-3" placeholder="Nome do Categoria de Árbitro" name="catReferee">
                     <div class="text-center mt-3">
                         <a href="index.jsp" class="btn btn-danger">Voltar</a>

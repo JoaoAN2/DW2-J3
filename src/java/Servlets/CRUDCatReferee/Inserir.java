@@ -73,13 +73,16 @@ public class Inserir extends HttpServlet {
         
         String siglaId = request.getParameter("id");
         String name = request.getParameter("catReferee");
-
-        CatReferee catReferee = new CatReferee(siglaId, name);
-
         DAOCatReferee daoCatReferee = new DAOCatReferee();
-        daoCatReferee.inserir(catReferee);
         
-        request.setAttribute("message", "CatReferee: " + catReferee.getSiglaCatReferee() + " inserido com sucesso");
+        if (daoCatReferee.obter(siglaId.toUpperCase()) == null) {
+            CatReferee catReferee = new CatReferee(siglaId.toUpperCase(), name);
+            daoCatReferee.inserir(catReferee);
+            request.setAttribute("message", "CatReferee: " + catReferee.getSiglaCatReferee() + " inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Árbitro já cadastrado!");
+        }
+        
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

@@ -73,7 +73,8 @@ public class Buscar extends HttpServlet {
 
         String id = request.getParameter("id");
         DAOFederation daoFederation = new DAOFederation();
-        Federation federation = daoFederation.obter(id);
+        
+        Federation federation = daoFederation.obter(id.toUpperCase());
 
         request.setAttribute("federationBuscar", federation);
         request.getRequestDispatcher("federation.jsp").forward(request, response);

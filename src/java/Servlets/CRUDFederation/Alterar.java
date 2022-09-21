@@ -71,15 +71,15 @@ public class Alterar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-         String siglaId = request.getParameter("id");
+        String siglaId = request.getParameter("id");
         String name = request.getParameter("federation");
-
-        Federation federation = new Federation(siglaId, name);
+        
+        Federation federation = new Federation(siglaId.toUpperCase(), name);
 
         DAOFederation daoFederation = new DAOFederation();
         daoFederation.atualizar(federation);
 
-        request.setAttribute("message", "Federation: " + federation.getSiglaFederation()+ " atualizado com sucesso");
+        request.setAttribute("message", "Federation: " + federation.getSiglaFederation() + " atualizado com sucesso");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
