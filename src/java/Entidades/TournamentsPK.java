@@ -89,7 +89,7 @@ public class TournamentsPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TournamentsPK[ tournamentsIdTournament=" + tournamentsIdTournament + ", tournamentsIdPlayer=" + tournamentsIdPlayer + ", positionPlayer=" + positionPlayer + " ]";
+        return tournamentsIdTournament + ";" + tournamentsIdPlayer + ";" + positionPlayer;
     }
     
 }

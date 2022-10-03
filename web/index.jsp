@@ -28,6 +28,10 @@
                     <li class="mb-2"><a href="CRUDTitle/index.jsp" class="w-100 btn btn-primary">Título</a></li>
                     <li class="mb-2"><a href="CRUDFederation/index.jsp" class="w-100 btn btn-success">Federação</a></li>
                     <li class="mb-2"><a href="CRUDCatReferee/index.jsp" class="w-100 btn btn-warning">Categoria de árbitros</a></li>
+                    <li class="mb-2"><a href="CRUDPlayer/index.jsp" class="w-100 btn btn-secondary">Jogadores</a></li>
+                    <li class="mb-2"><a href="CRUDState/index.jsp" class="w-100 btn btn-warning">Estados</a></li>
+                    <li class="mb-2"><a href="CRUDCity/index.jsp" class="w-100 btn btn-success">Cidades</a></li>
+                    <li class="mb-2"><a href="CRUDTournament/index.jsp" class="w-100 btn btn-primary">Torneios</a></li>
                 </ul>
             </div>
         </div>

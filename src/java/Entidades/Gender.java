@@ -98,10 +98,5 @@ public class Gender implements Serializable {
     @Override
     public String toString() {
         return siglaGender + ";" + fullGender;
-    }
-    
-    public String toJson() {
-        return "{\n\"sigla_gender\": \"" + siglaGender + "\",\n"
-                + "\"full_gender\": \"" + fullGender + "\"\n}"; 
-    }
+    }    
 }

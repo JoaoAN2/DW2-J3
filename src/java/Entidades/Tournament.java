@@ -5,7 +5,6 @@
 package Entidades;
 
 import Tools.DateTools;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

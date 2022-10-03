@@ -14,6 +14,7 @@ public class DateTools {
 
     Scanner teclado = new Scanner(System.in);
     SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat SDFBD = new SimpleDateFormat("yyyy-MM-dd");
 
     public DateTools() {
         SDF.setLenient(false);
@@ -48,6 +49,22 @@ public class DateTools {
         try {
             return SDF.parse(date);
         } catch (ParseException e) {
+            return null;
+        }
+    }
+    
+    public Date conversionStringInputDate(String date) {
+        try {
+            return SDFBD.parse(date);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    public String conversionDateToStringBD(Date date) {
+        try {
+            return SDFBD.format(date);
+        } catch (Exception e) {
             return null;
         }
     }
