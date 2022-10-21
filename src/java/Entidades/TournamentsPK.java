@@ -11,7 +11,7 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @Embeddable
 public class TournamentsPK implements Serializable {

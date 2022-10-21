@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "BuscarState", urlPatterns = {"/CRUDState/Buscar"})
 public class Buscar extends HttpServlet {

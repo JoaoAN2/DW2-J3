@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "AlterarPlayer", urlPatterns = {"/CRUDPlayer/Alterar"})
 public class Alterar extends HttpServlet {

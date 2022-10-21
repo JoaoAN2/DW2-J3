@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "RemoverCatReferee", urlPatterns = {"/CRUDCatReferee/Remover"})
 public class Remover extends HttpServlet {

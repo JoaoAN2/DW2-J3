@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "InserirCity", urlPatterns = {"/CRUDCity/Inserir"})
 public class Inserir extends HttpServlet {
@@ -78,14 +78,19 @@ public class Inserir extends HttpServlet {
         String name = (String) request.getParameter("name");
         State state = new DAOState().obter(request.getParameter("state"));
 
-        city.setIdCity(id);
-        city.setNameCity(name);
-        city.setStateSiglaCity(state);
-
         DAOCity daoCity = new DAOCity();
-        daoCity.inserir(city);
 
-        request.setAttribute("message", "Cidade " + city.getIdCity() + ": " + city.getNameCity() + " inserido com sucesso");
+        if (daoCity.obter(id) == null) {
+            city.setIdCity(id);
+            city.setNameCity(name);
+            city.setStateSiglaCity(state);
+
+            daoCity.inserir(city);
+            request.setAttribute("message", "Cidade " + city.getIdCity() + ": " + city.getNameCity() + " inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Cidade " + id + " já cadastrada!");
+        }
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

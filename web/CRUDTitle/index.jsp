@@ -18,7 +18,7 @@
         <div class="d-flex justify-content-center align-items-center min-vh-100">
             <form action="Buscar" class="border border-dark p-5" method="POST">
                 <div class="text-center">
-                    <a href="https://www.github.com/JoaoAN2" class="copy-name" target="_blank">
+                    <a href="https://www.github.com/JoaoAN2/DW2-J3" class="copy-name" target="_blank">
                         <h1>@J³</h1>
                     </a>
                 </div>

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "InserirTournament", urlPatterns = {"/CRUDTournament/Inserir"})
 public class Inserir extends HttpServlet {
@@ -33,7 +33,7 @@ public class Inserir extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -76,23 +76,27 @@ public class Inserir extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Tournament tournament = new Tournament();
         DateTools dt = new DateTools();
-        
+
         int id = Integer.parseInt(request.getParameter("id"));
         Date start = dt.conversionStringInputDate(request.getParameter("start"));
         Date end = dt.conversionStringInputDate(request.getParameter("end"));
         int rounds = Integer.valueOf(request.getParameter("rounds"));
         City city = new DAOCity().obter(Integer.valueOf(request.getParameter("city")));
 
-        tournament.setIdTournament(id);
-        tournament.setStartDateTournament(start);
-        tournament.setEndDateTournament(end);
-        tournament.setRoundsTournament(rounds);
-        tournament.setCityIdTournament(city);
-
         DAOTournament daoTournament = new DAOTournament();
-        daoTournament.inserir(tournament);
-        
-        request.setAttribute("message", "Torneio " + tournament.getIdTournament()+ ": inserido com sucesso");
+        if (daoTournament.obter(id) == null) {
+            tournament.setIdTournament(id);
+            tournament.setStartDateTournament(start);
+            tournament.setEndDateTournament(end);
+            tournament.setRoundsTournament(rounds);
+            tournament.setCityIdTournament(city);
+
+            daoTournament.inserir(tournament);
+            request.setAttribute("message", "Torneio " + tournament.getIdTournament() + ": inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Torneio " + id + " já cadastrado!");
+        }
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

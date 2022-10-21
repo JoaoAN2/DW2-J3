@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 public class LerJava {
 

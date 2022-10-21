@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @Entity
 @Table(name = "player")

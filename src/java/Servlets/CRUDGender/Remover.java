@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "RemoverGender", urlPatterns = {"/CRUDGender/Remover"})
 public class Remover extends HttpServlet {

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author joaoan2
+ * @author J³
  */
 @WebServlet(name = "InserirState", urlPatterns = {"/CRUDState/Inserir"})
 public class Inserir extends HttpServlet {
@@ -31,7 +31,7 @@ public class Inserir extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -73,19 +73,23 @@ public class Inserir extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         State state = new State();
-        
+
         String sigla = request.getParameter("sigla");
         String name = (String) request.getParameter("name");
         Federation federation = new DAOFederation().obter(request.getParameter("federation"));
 
-        state.setSiglaState(sigla);
-        state.setNameState(name);
-        state.setFederationIdState(federation);
-        
         DAOState daoState = new DAOState();
-        daoState.inserir(state);
-        
-        request.setAttribute("message", "Estado " + state.getSiglaState()+ ": " + state.getNameState()+ " inserido com sucesso");
+        if (daoState.obter(sigla) == null) {
+            state.setSiglaState(sigla);
+            state.setNameState(name);
+            state.setFederationIdState(federation);
+
+            daoState.inserir(state);
+            request.setAttribute("message", "Estado " + state.getSiglaState() + ": " + state.getNameState() + " inserido com sucesso");
+        } else {
+            request.setAttribute("message", "Estado " + sigla + " já cadastrado!");
+        }
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
