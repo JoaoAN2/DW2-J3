@@ -1,3 +1,4 @@
+<%@page import="Entidades.Player"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +16,7 @@
     </head>
 
     <body>
-        <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="d-flex justify-content-center align-items-center min-vh-100" style="background: url(<% Player user = (Player) session.getAttribute("user"); out.print(user.getProfilePictureUrl()); %>)">
             <form action="Buscar" class="border border-dark p-5" method="POST">
                 <div class="text-center">
                     <a href="https://www.github.com/JoaoAN2/DW2-J3" class="copy-name" target="_blank">

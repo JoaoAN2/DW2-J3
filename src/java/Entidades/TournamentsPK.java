@@ -11,7 +11,7 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author J³
+ * @author joaoan2
  */
 @Embeddable
 public class TournamentsPK implements Serializable {
@@ -22,17 +22,13 @@ public class TournamentsPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "tournaments_id_player")
     private int tournamentsIdPlayer;
-    @Basic(optional = false)
-    @Column(name = "position_player")
-    private int positionPlayer;
 
     public TournamentsPK() {
     }
 
-    public TournamentsPK(int tournamentsIdTournament, int tournamentsIdPlayer, int positionPlayer) {
+    public TournamentsPK(int tournamentsIdTournament, int tournamentsIdPlayer) {
         this.tournamentsIdTournament = tournamentsIdTournament;
         this.tournamentsIdPlayer = tournamentsIdPlayer;
-        this.positionPlayer = positionPlayer;
     }
 
     public int getTournamentsIdTournament() {
@@ -51,20 +47,11 @@ public class TournamentsPK implements Serializable {
         this.tournamentsIdPlayer = tournamentsIdPlayer;
     }
 
-    public int getPositionPlayer() {
-        return positionPlayer;
-    }
-
-    public void setPositionPlayer(int positionPlayer) {
-        this.positionPlayer = positionPlayer;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) tournamentsIdTournament;
         hash += (int) tournamentsIdPlayer;
-        hash += (int) positionPlayer;
         return hash;
     }
 
@@ -81,15 +68,11 @@ public class TournamentsPK implements Serializable {
         if (this.tournamentsIdPlayer != other.tournamentsIdPlayer) {
             return false;
         }
-        if (this.positionPlayer != other.positionPlayer) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return tournamentsIdTournament + ";" + tournamentsIdPlayer + ";" + positionPlayer;
-    }
-    
+        return tournamentsIdTournament + ";" + tournamentsIdPlayer;
+    }    
 }

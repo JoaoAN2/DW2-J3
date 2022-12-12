@@ -5,7 +5,6 @@
 package Entidades;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -17,7 +16,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author J³
+ * @author joaoan2
  */
 @Entity
 @Table(name = "tournaments")
@@ -25,16 +24,14 @@ import javax.persistence.Table;
     @NamedQuery(name = "Tournaments.findAll", query = "SELECT t FROM Tournaments t"),
     @NamedQuery(name = "Tournaments.findByTournamentsIdTournament", query = "SELECT t FROM Tournaments t WHERE t.tournamentsPK.tournamentsIdTournament = :tournamentsIdTournament"),
     @NamedQuery(name = "Tournaments.findByTournamentsIdPlayer", query = "SELECT t FROM Tournaments t WHERE t.tournamentsPK.tournamentsIdPlayer = :tournamentsIdPlayer"),
-    @NamedQuery(name = "Tournaments.findByPositionPlayer", query = "SELECT t FROM Tournaments t WHERE t.tournamentsPK.positionPlayer = :positionPlayer"),
-    @NamedQuery(name = "Tournaments.findByPointsPlayer", query = "SELECT t FROM Tournaments t WHERE t.pointsPlayer = :pointsPlayer")})
+    @NamedQuery(name = "Tournaments.findByPositionPlayer", query = "SELECT t FROM Tournaments t WHERE t.positionPlayer = :positionPlayer")})
 public class Tournaments implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected TournamentsPK tournamentsPK;
-    @Basic(optional = false)
-    @Column(name = "points_player")
-    private int pointsPlayer;
+    @Column(name = "position_player")
+    private Integer positionPlayer;
     @JoinColumn(name = "tournaments_id_player", referencedColumnName = "id_player", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Player player;
@@ -49,13 +46,8 @@ public class Tournaments implements Serializable {
         this.tournamentsPK = tournamentsPK;
     }
 
-    public Tournaments(TournamentsPK tournamentsPK, int pointsPlayer) {
-        this.tournamentsPK = tournamentsPK;
-        this.pointsPlayer = pointsPlayer;
-    }
-
-    public Tournaments(int tournamentsIdTournament, int tournamentsIdPlayer, int positionPlayer) {
-        this.tournamentsPK = new TournamentsPK(tournamentsIdTournament, tournamentsIdPlayer, positionPlayer);
+    public Tournaments(int tournamentsIdTournament, int tournamentsIdPlayer) {
+        this.tournamentsPK = new TournamentsPK(tournamentsIdTournament, tournamentsIdPlayer);
     }
 
     public TournamentsPK getTournamentsPK() {
@@ -66,12 +58,12 @@ public class Tournaments implements Serializable {
         this.tournamentsPK = tournamentsPK;
     }
 
-    public int getPointsPlayer() {
-        return pointsPlayer;
+    public Integer getPositionPlayer() {
+        return positionPlayer;
     }
 
-    public void setPointsPlayer(int pointsPlayer) {
-        this.pointsPlayer = pointsPlayer;
+    public void setPositionPlayer(Integer positionPlayer) {
+        this.positionPlayer = positionPlayer;
     }
 
     public Player getPlayer() {
@@ -112,6 +104,6 @@ public class Tournaments implements Serializable {
 
     @Override
     public String toString() {
-        return tournamentsPK + ";" + pointsPlayer;
+        return tournamentsPK + ";" + positionPlayer;
     }    
 }

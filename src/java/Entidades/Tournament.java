@@ -5,6 +5,7 @@
 package Entidades;
 
 import Tools.DateTools;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author J³
+ * @author joaoan2
  */
 @Entity
 @Table(name = "tournament")
@@ -60,6 +61,9 @@ public class Tournament implements Serializable {
     @JoinColumn(name = "city_id_tournament", referencedColumnName = "id_city")
     @ManyToOne(optional = false)
     private City cityIdTournament;
+    @JoinColumn(name = "organizer_id_tournament", referencedColumnName = "player_id_organizer")
+    @ManyToOne(optional = false)
+    private Organizer organizerIdTournament;
 
     public Tournament() {
     }
@@ -131,6 +135,14 @@ public class Tournament implements Serializable {
         this.cityIdTournament = cityIdTournament;
     }
 
+    public Organizer getOrganizerIdTournament() {
+        return organizerIdTournament;
+    }
+
+    public void setOrganizerIdTournament(Organizer organizerIdTournament) {
+        this.organizerIdTournament = organizerIdTournament;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -154,6 +166,6 @@ public class Tournament implements Serializable {
     @Override
     public String toString() {
         DateTools dt = new DateTools();
-        return idTournament + ";" + dt.conversionDateToString(startDateTournament) + ";" + dt.conversionDateToString(endDateTournament) + ";" + roundsTournament + ";" + cityIdTournament.getIdCity();
+        return idTournament + ";" + dt.conversionDateToString(startDateTournament) + ";" + dt.conversionDateToString(endDateTournament) + ";" + roundsTournament + ";" + cityIdTournament.getIdCity() + ";" + organizerIdTournament.getPlayerIdOrganizer();
     }    
 }

@@ -7,7 +7,6 @@ package Entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author J³
+ * @author joaoan2
  */
 @Entity
 @Table(name = "title")
@@ -36,7 +35,7 @@ public class Title implements Serializable {
     @Basic(optional = false)
     @Column(name = "name_title")
     private String nameTitle;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "titleSiglaPlayer")
+    @OneToMany(mappedBy = "titleSiglaPlayer")
     private List<Player> playerList;
 
     public Title() {

@@ -1,6 +1,14 @@
-<%@page import="Entidades.Tournament"%>
-<%@page import="Entidades.City"%>
-<%@page import="DAOs.DAOCity"%>
+<%@page import="Entidades.CatReferee"%>
+<%@page import="DAOs.DAOCatReferee"%>
+<%@page import="Entidades.Player"%>
+<%@page import="DAOs.DAOPlayer"%>
+<%@page import="Entidades.Referee"%>
+<%@page import="Entidades.Title"%>
+<%@page import="DAOs.DAOTitle"%>
+<%@page import="Entidades.Gender"%>
+<%@page import="DAOs.DAOGender"%>
+<%@page import="Entidades.Federation"%>
+<%@page import="DAOs.DAOFederation"%>
 <%@page import="Tools.DateTools"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -8,18 +16,20 @@
 <html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>torneio</title>
+        <title>arbitro</title>
 
-        <link rel="stylesheet" href="css/custom.css">
 
         <!-- Bootstrap -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
         <script src="../assets/css/bootstrap.min.js"></script>>
+
+        <link rel="stylesheet" href="../assets/css/custom.css">
+
     </head>
     <body>
 
         <%
-            Tournament result = (Tournament) request.getAttribute("tournamentBuscar");
+            Referee result = (Referee) request.getAttribute("refereeBuscar");
             DateTools dt = new DateTools();
             if (result != null) { %>
 
@@ -30,26 +40,30 @@
                         <h1>@J³</h1>
                     </a>
                 </div>
-                <h2 class="my-3">Torneio</h2>
-                <input type="number" class="form-control mb-3" placeholder="Id do Torneio" id="id" name="id" required value="<%out.print(result.getIdTournament());%>" readonly>
-                <input type="date" class="form-control mb-3" placeholder="Data de Início" name="start" required value="<%out.print(dt.conversionDateToStringBD(result.getStartDateTournament()));%>">
-                <input type="date" class="form-control mb-3" placeholder="Data Final" name="end" required value="<%out.print(dt.conversionDateToStringBD(result.getEndDateTournament()));%>">
-                <input type="number" class="form-control mb-3" placeholder="Rodadas" name="rounds" required value="<%out.print(result.getRoundsTournament());%>">
-                <select class="form-select mb-3" name="city">
+                <h2 class="my-3">Arbitro</h2>
+
+                <select class="form-select mb-3" name="id" readonly id="id">
                     <%
-                        DAOCity daoCity = new DAOCity();
-                        List<City> resultCity = daoCity.list();
-                        if (resultCity.size() != 0) {
-                            for (int i = 0; i < resultCity.size(); i++) {
-                                out.println("<option value=\"" + resultCity.get(i).getIdCity() + "\"" + (resultCity.get(i).getIdCity() == result.getCityIdTournament().getIdCity() ? "selected" : "") +">" + resultCity.get(i).getNameCity() + "</option>");
+                        
+                        out.println("<option value=\"" + result.getPlayerIdPlayer() + "\"" + ">" + new DAOPlayer().obter(result.getPlayerIdPlayer()).getNamePlayer() + "</option>");%>
+                </select>
+
+                <select class="form-select mb-3" name="catReferee">
+                    <%
+                        DAOCatReferee daoCatReferee = new DAOCatReferee();
+                        List<CatReferee> resultCatReferee = daoCatReferee.list();
+                        if (resultCatReferee.size() != 0) {
+                            for (int i = 0; i < resultCatReferee.size(); i++) {
+                                out.println("<option value=\"" + resultCatReferee.get(i).getSiglaCatReferee() + "\"" + (resultCatReferee.get(i).getSiglaCatReferee() == result.getCatRefereeIdReferee().getSiglaCatReferee() ? "selected" : "") + ">" + resultCatReferee.get(i).getNameCatReferee() + "</option>");
                             }
                         }
                     %>
                 </select>
+
                 <div class="text-center mt-3">
                     <a href="index.jsp" class="btn btn-danger">Voltar</a>
-                    <button type="submit" class="btn btn-success">Alterar torneio</button>
-                    <button type="button" class="btn btn-success" id="deletar">Deletar torneio</button>
+                    <button type="submit" class="btn btn-success">Alterar arbitro</button>
+                    <button type="button" class="btn btn-success" id="deletar">Deletar arbitro</button>
                 </div>
             </form>
         </div>

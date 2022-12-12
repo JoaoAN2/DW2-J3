@@ -38,6 +38,10 @@ public class DAOTournament extends DAOGenerico<Tournament> {
         return em.createQuery("SELECT e FROM tournament e ORDER BY e.city_id_tournament").getResultList();
     }
 
+    public List<Tournament> listInOrderOrganizerIdTournament() {
+        return em.createQuery("SELECT e FROM tournament e ORDER BY e.organizer_id_tournament").getResultList();
+    }
+
     public List<String> listInOrderString(String order) {
         List<Tournament> lf;
         if (order.equals("idTournament")) {
@@ -50,6 +54,8 @@ public class DAOTournament extends DAOGenerico<Tournament> {
             lf = listInOrderRoundsTournament();
         } else if (order.equals("cityIdTournament")) {
             lf = listInOrderCityIdTournament();
+        } else if (order.equals("organizerIdTournament")) {
+            lf = listInOrderOrganizerIdTournament();
         } else {
             lf = listInOrderIdTournament();
         }
