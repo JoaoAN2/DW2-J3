@@ -1,3 +1,5 @@
+<%@page import="DAOs.DAOTournament"%>
+<%@page import="DAOs.DAOTournaments"%>
 <%@page import="java.util.List"%>
 <%@page import="Entidades.Player"%>
 <%@page import="DAOs.DAOPlayer"%>
@@ -69,9 +71,9 @@
                             <tbody>
 
                                 <%
-                                    DAOPlayer daoPlayer = new DAOPlayer();
-                                    List<Player> topTen = daoPlayer.getTopTen();
-                                    for (Player topPlayer : topTen) {%>
+                                    DAOTournaments daoTournaments = new DAOTournaments();
+                                    List<Player> playersInTournament = daoTournaments.getPlayersInTournament(new DAOTournament().obter(1));
+                                    for (Player topPlayer : playersInTournament) {%>
 
                                 <tr>
                                     <th scope="row"><%= topPlayer.getIdPlayer()%></th>

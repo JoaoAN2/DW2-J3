@@ -25,9 +25,7 @@ public class DAOPlayer extends DAOGenerico<Player> {
         return em.createQuery("SELECT e FROM Player e ORDER BY e.pointsPlayer DESC").setMaxResults(10).getResultList();
     }
     
-    public List<Player> listPlayersFromTournament(Tournaments tournaments) {
-        return em.createQuery("SELECT e FROM tournaments e ORDER BY e.tournaments_id_tournament").getResultList();
-    }
+    
     
     public int autoIdPlayer() {
         Integer a = (Integer) em.createQuery("SELECT MAX(e.idPlayer) FROM playere ").getSingleResult();
